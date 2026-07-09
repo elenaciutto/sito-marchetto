@@ -1296,7 +1296,8 @@ footer ul a:hover {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 260px;
+    width: min(260px, 80vw);
+    max-width: 320px;
     height: 100vh;
     background-color: rgba(10, 10, 10, 0.98);
     border-left: 2px solid var(--neon-green);
@@ -1310,6 +1311,14 @@ footer ul a:hover {
     right: 0;
     border-left: none; /* remove visible seam when open */
     box-shadow: -6px 0 20px rgba(0,0,0,0.45);
+  }
+
+  @media screen and (max-width: 600px) {
+    .nav-container {
+      width: 100%;
+      right: -100%;
+      padding: 5.5rem 1.5rem 2rem 1.5rem;
+    }
   }
 
   .menu-toggle-cb:checked ~ .menu-toggle-btn .hamburger-line:nth-child(1) {
