@@ -278,10 +278,10 @@ header {
 }
 
 .menu-toggle-cb {
-  display: none !important;
+  display: none;
 }
 .menu-toggle-btn {
-  display: none !important;
+  display: none;
 }
 
 .menu-toggle-btn {
@@ -1273,9 +1273,12 @@ footer ul a:hover {
     gap: 6px;
     cursor: pointer;
     padding: 0.5rem;
-    z-index: 110;
+    z-index: 120;
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.08);
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
   }
 
   .hamburger-line {
@@ -1296,8 +1299,8 @@ footer ul a:hover {
     position: fixed;
     top: 0;
     right: -100%;
-    width: min(260px, 80vw);
-    max-width: 320px;
+    width: 100%;
+    max-width: 100%;
     height: 100vh;
     background-color: rgba(10, 10, 10, 0.98);
     border-left: 2px solid var(--neon-green);
@@ -1316,8 +1319,14 @@ footer ul a:hover {
   @media screen and (max-width: 600px) {
     .nav-container {
       width: 100%;
+      max-width: 100%;
       right: -100%;
       padding: 5.5rem 1.5rem 2rem 1.5rem;
+    }
+
+    .menu-toggle-btn {
+      top: 1rem;
+      right: 1rem;
     }
   }
 
