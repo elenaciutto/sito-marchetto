@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Questa regola impedisce ai motori di ricerca di indicizzare l'intero sito.
+# Utile per anteprime private o versioni di staging su Vercel.

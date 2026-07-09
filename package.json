@@ -1,0 +1,11 @@
+{
+  "name": "sito-marchetto-tests",
+  "version": "1.0.0",
+  "description": "Viewport screenshot tests for SITO",
+  "scripts": {
+    "test:viewports": "node test-viewports.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^20.0.0"
+  }
+}
