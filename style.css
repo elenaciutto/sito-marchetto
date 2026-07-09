@@ -41,6 +41,13 @@ body {
   overflow-x: hidden;
 }
 
+body.menu-open {
+  overflow: hidden;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -677,22 +684,22 @@ header {
 
 /* Immagini con il nome corretto SEO concordato */
 .img-sfalcio {
-  background-image: url("./img/sfalcio-erba-cura-verde-condominiale-mestre.jpg"), url("./img/sfalcio-erba-cura-verde-condominiale-mestre.svg");
+  background-image: url("./img/sfalcio-erba-cura-verde-condominiale-mestre.jpg");
 }
 .img-potatura {
-  background-image: url("./img/potatura-manutenzione-siepi-condominio-mestre.jpg"), url("./img/potatura-manutenzione-siepi-condominio-mestre.svg");
+  background-image: url("./img/potatura-manutenzione-siepi-condominio-mestre.jpg");
 }
 .img-rimozione {
-  background-image: url("./img/abbattimento-rimozione-alberi-alto-fusto-mestre-marcon.jpg"), url("./img/abbattimento-rimozione-alberi-alto-fusto-mestre-marcon.svg");
+  background-image: url("./img/abbattimento-rimozione-alberi-alto-fusto-mestre-marcon.jpg");
 }
 .img-ceppaie {
-  background-image: url("./img/fresatura-ceppaie-venezia.jpg"), url("./img/fresatura-ceppaie-venezia.svg");
+  background-image: url("./img/fresatura-ceppaie-venezia.svg");
 }
 .img-pulizia {
-  background-image: url("./img/pulizia-giardino-pacciamatura-mestre.jpg"), url("./img/pulizia-giardino-pacciamatura-mestre.svg");
+  background-image: url("./img/pulizia-giardino-pacciamatura-mestre.svg");
 }
 .img-grid-rigenerazione {
-  background-image: url("./img/risemina-rigenerazione-prato-marcon.jpg"), url("./img/risemina-rigenerazione-prato-marcon.svg");
+  background-image: url("./img/risemina-rigenerazione-prato-marcon.svg");
 }
 
 /* ==========================================================================
@@ -1614,5 +1621,33 @@ footer ul a:hover {
   .btn-primary-dark {
     width: 100% !important;
     text-align: center;
+  }
+}
+
+}
+
+@media screen and (max-width: 480px) {
+  .contact-container,
+  .contact-form,
+  .form-row-shared {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select,
+  .form-dropdown {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .contact-form button,
+  .btn-primary-dark {
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }

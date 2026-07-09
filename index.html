@@ -987,11 +987,19 @@
       (function () {
         const toggle = document.getElementById('menu-toggle');
         if (!toggle) return;
+
+        const updateBodyState = () => {
+          document.body.classList.toggle('menu-open', toggle.checked);
+        };
+
+        toggle.addEventListener('change', updateBodyState);
+        updateBodyState();
+
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach((link) => {
           link.addEventListener('click', () => {
-            // close mobile menu when a navigation link is clicked
             toggle.checked = false;
+            updateBodyState();
           });
         });
       })();
