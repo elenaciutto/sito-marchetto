@@ -192,8 +192,8 @@ details:focus-visible summary {
 }
 
 /* ==========================================================================
-           4. HEADER, MENU & NAVIGATION
-           ========================================================================== */
+   4. HEADER, MENU & NAVIGATION
+   ========================================================================== */
 header {
   background-color: rgba(10, 10, 10, 0.85);
   border-bottom: 2px solid var(--neon-green);
@@ -288,47 +288,28 @@ header {
 .menu-toggle-cb {
   display: none;
 }
+
+/* Correzione: nascosto su desktop */
 .menu-toggle-btn {
   display: none;
 }
 
-.menu-toggle-btn {
-  width: 48px;
-  height: 44px;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-
-.menu-toggle-btn:hover,
-.menu-toggle-btn:focus-visible {
-  background-color: rgba(57, 255, 20, 0.12);
-  transform: translateY(-1px);
-    outline: 3px solid rgba(57, 255, 20, 0.45);
-    outline-offset: 3px;
-
-  padding: 6rem 0 4rem !important;
-}
-
+/* ==========================================================================
+     5. HERO SECTION
+     ========================================================================== */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center; /* Allineamento verticale centrato */
+  padding: 4rem 2rem;
+  margin: 4rem 0;
   background-color: var(--bg-dark-card);
   border: 1px solid var(--border-dark);
   border-radius: 20px;
-  padding: 4rem;
   transition: transform 0.4s var(--transition-smooth),
     border-color 0.4s var(--transition-smooth),
-    background-color 0.4s var(--transition-smooth),
-    box-shadow 0.4s var(--transition-smooth);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    background-color 0.4s var(--transition-smooth);
 }
 
 .hero:hover {
@@ -354,13 +335,14 @@ header {
   font-weight: 300;
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  text-align: justify; /* Paragrafo giustificato come richiesto */
+  text-align: justify;
 }
 
 .hero-image {
   display: block;
   width: 100%;
-  height: 420px;
+  height: 100%;
+  max-height: 420px;
   object-fit: cover;
   object-position: center;
   border-radius: 16px;
@@ -380,9 +362,6 @@ header {
   text-decoration: none;
   border: 2px solid var(--neon-green);
   transition: all 0.4s var(--transition-smooth);
-  white-space: nowrap; /* keep label on one line to avoid orphans */
-  overflow-wrap: normal;
-  word-break: keep-all;
 }
 
 .btn-primary:hover {
@@ -676,10 +655,15 @@ header {
 .service-img {
   width: 100%;
   height: 290px;
+  min-height: 220px;
   border-radius: 14px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.04); /* subtle contrast for SVG placeholders */
   border: 1px solid var(--border-dark);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35) inset, 0 6px 18px rgba(0,0,0,0.25);
+  display: block;
 }
 
 /* Immagini con il nome corretto SEO concordato */
@@ -1262,7 +1246,7 @@ footer ul a:hover {
 /* ==========================================================================
             16. RESPONSIVE DISPLAYS & HAMBURGER SYSTEM
             ========================================================================== */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 900px) {
   .menu-toggle-btn {
     display: flex;
     flex-direction: column;
@@ -1312,20 +1296,6 @@ footer ul a:hover {
     box-shadow: -6px 0 20px rgba(0,0,0,0.45);
   }
 
-  @media screen and (max-width: 600px) {
-    .nav-container {
-      width: 100%;
-      max-width: 100%;
-      right: -100%;
-      padding: 5.5rem 1.5rem 2rem 1.5rem;
-    }
-
-    .menu-toggle-btn {
-      top: 1rem;
-      right: 1rem;
-    }
-  }
-
   .menu-toggle-cb:checked ~ .menu-toggle-btn .hamburger-line:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
     background-color: var(--neon-green);
@@ -1351,6 +1321,19 @@ footer ul a:hover {
     transition: opacity 0.25s ease;
   }
 
+  /* Mobile-specific visual fixes: ensure placeholders and forms fit */
+  .service-img {
+    height: 200px !important;
+    min-height: 160px !important;
+    background-size: cover !important;
+  }
+
+  .contact-form {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .nav-links {
     flex-direction: column;
     align-items: flex-start;
@@ -1400,6 +1383,38 @@ footer ul a:hover {
     border-radius: 4px;
   }
 
+  .service-row {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+  .service-row:nth-child(even) {
+    grid-template-areas: none;
+  }
+  .service-row .service-text,
+  .service-row .service-img {
+    width: 100%;
+  }
+  .service-img {
+    height: 260px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+  .contact-container,
+  .contact-form,
+  .contact-info {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .form-dropdown {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -1416,90 +1431,6 @@ footer ul a:hover {
   }
 }
 
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    width: 100%;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links a {
-    width: 100%;
-    padding: 0.95rem 1rem;
-  }
-
-  .nav-links a:focus-visible,
-  .dropdown-menu a:focus-visible {
-    outline: 3px solid var(--neon-green);
-    outline-offset: 3px;
-    background-color: rgba(57, 255, 20, 0.12);
-  }
-
-  .dropdown-menu {
-    position: relative;
-    top: 0;
-    margin-top: 0.5rem;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.03);
-    box-shadow: none;
-    padding-left: 1rem;
-  }
-  /* Mobile: stronger hover accent for dropdown items */
-  .nav-container .dropdown-menu a {
-    transition: background-color 0.22s ease, color 0.2s ease, padding-left 0.18s ease;
-  }
-  .nav-container .dropdown-menu a:hover,
-  .nav-container .dropdown-menu a:focus-visible {
-    background-color: rgba(57, 255, 20, 0.14);
-    color: #070a00;
-    padding-left: 1.4rem;
-    border-left: 4px solid var(--neon-green);
-    border-radius: 4px;
-  }
-
-  .hero,
-  .bio-grid,
-  .service-row,
-  .network-grid,
-  .contact-container,
-  .footer-grid,
-  .work-with-me-container {
-    grid-template-columns: 1fr !important;
-    gap: 3rem !important;
-    padding: 2.5rem 1.5rem !important;
-  }
-
-  .bento-box,
-  .job-application-form,
-  .contact-form {
-    padding: 2rem 1.5rem !important;
-  }
-
-  .form-row-shared {
-    grid-template-columns: 1fr !important;
-  }
-  .bento-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .hero-image,
-  .service-img,
-  .bio-placeholder-img,
-  .collab-real-img {
-    height: 300px !important;
-  }
-  .hero-image,
-  .service-img {
-    order: -1 !important;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .hero-section {
     padding-top: 4rem !important;
@@ -1512,7 +1443,47 @@ footer ul a:hover {
     padding: 2rem !important;
   }
 
-/* Fix: prevent form and cards overflowing on very small devices (iPhone SE, etc.) */
+  .hero-text {
+    order: 2;
+    max-width: 100%;
+  }
+
+  .hero .sub {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    order: 1;
+    width: 100%;
+    height: 260px !important;
+  }
+
+  .hero h1 {
+    font-size: 1.85rem !important;
+    line-height: 1.35;
+  }
+
+  .btn-primary {
+    width: 100% !important;
+    max-width: 100%;
+    text-align: center;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  /* Ensure contact and job application form fields use full width */
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select,
+  .job-application-form input,
+  .job-application-form textarea,
+  .job-application-form .application-dropdown {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .container {
     padding-left: 0.75rem;
@@ -1568,47 +1539,6 @@ footer ul a:hover {
   }
 }
 
-  .hero-text {
-    order: 2;
-    max-width: 100%;
-  }
-
-  .hero .sub {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-image {
-    order: 1;
-    width: 100%;
-    height: 260px !important;
-  }
-
-  .hero h1 {
-    font-size: 1.85rem !important;
-    line-height: 1.35;
-  }
-
-  .btn-primary {
-    width: 100% !important;
-    max-width: 100%;
-    text-align: center;
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-  }
-
-  /* Ensure contact and job application form fields use full width */
-  .contact-form input,
-  .contact-form textarea,
-  .contact-form select,
-  .job-application-form input,
-  .job-application-form textarea,
-  .job-application-form .application-dropdown {
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-}
-
 @media screen and (max-width: 480px) {
   .hero h1 {
     font-size: 1.6rem !important;
@@ -1622,8 +1552,6 @@ footer ul a:hover {
     width: 100% !important;
     text-align: center;
   }
-}
-
 }
 
 @media screen and (max-width: 480px) {
