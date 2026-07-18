@@ -1267,7 +1267,8 @@ footer ul a:hover {
               16. RESPONSIVE DISPLAYS & HAMBURGER SYSTEM
               ========================================================================== */
 @media screen and (max-width: 900px) {
-/* =========================================================
+
+ /* =========================================================
      FASE 1: REGOLA SCHIACCIASASSI PER LE GRIGLIE MOBILE
      ========================================================= */
   .bio-grid,
@@ -1276,22 +1277,22 @@ footer ul a:hover {
   .work-with-me-container,
   .footer-grid {
     grid-template-columns: 1fr !important;
-    gap: 3rem !important; 
+    gap: 3rem !important;
   }
 
   /* Riduciamo i padding interni per non soffocare lo schermo */
   .bento-box {
     padding: 2.5rem 1.5rem !important;
   }
-  
+
   .footer-grid {
     gap: 2.5rem !important;
   }
 
-/* =========================================================
+  /* =========================================================
      FASE 2: RESET LAYOUT SERVIZI (02, 04, 06) SU MOBILE
      ========================================================= */
-  
+
   /* 1. Forza la singola colonna e riduce i margini enormi del desktop */
   .service-row {
     grid-template-columns: 1fr !important;
@@ -1307,21 +1308,190 @@ footer ul a:hover {
   /* 3. RESET VITALE: sgancia testo e immagine dalle vecchie regole desktop */
   .service-row:nth-child(even) .service-text,
   .service-row:nth-child(even) .service-img {
-    grid-area: auto !important; 
+    grid-area: auto !important;
   }
 
   /* 4. Forza l'ordine naturale: Testo sopra, Immagine sotto */
   .service-text {
     order: 1 !important;
   }
-  
+
   .service-img {
     order: 2 !important;
     width: 100% !important;
     height: 260px !important; /* Altezza sicura per non schiacciare le foto */
     min-height: 260px !important;
   }
+  /* =========================================================
+     FASE 3: FIX MODULI, FORM E BORDI NEON SU MOBILE
+     ========================================================= */
 
+  /* 1. Risolve l'implosione in "Lavora con me": da 2 colonne a 1 colonna singola */
+  .form-row-shared {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+
+  /* 2. Rimuove il blocco di sistema di Apple/Android per permettere la personalizzazione */
+  .contact-form input,
+  .contact-form textarea,
+  .form-dropdown,
+  .job-application-form input,
+  .job-application-form textarea,
+  .job-application-form .application-dropdown {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 100% !important;
+  }
+
+  /* 3. Forza l'accensione del bordo verde fluo quando si seleziona un campo */
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .form-dropdown:focus,
+  .job-application-form input:focus,
+  .job-application-form textarea:focus,
+  .job-application-form .application-dropdown:focus {
+    outline: none !important;
+    border: 1px solid var(--neon-green) !important;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4) !important;
+  }
+
+  /* 4. Aggiusta gli spazi del modulo Sopralluogo su schermi stretti */
+  .job-application-form {
+    padding: 2.5rem 1.5rem !important;
+  }
+
+  /* 5. Contorno verde ben visibile per i campi non selezionati */
+  .contact-form input,
+  .contact-form textarea,
+  .form-dropdown,
+  .job-application-form input,
+  .job-application-form textarea,
+  .job-application-form .application-dropdown {
+    border: 1px solid rgba(57, 255, 20, 0.65) !important;
+  }
+
+  /* 6. Bordo verde ben visibile per i macro-contenitori scuri */
+  .hero,
+  .bento-box,
+  .contact-container {
+    border: 1px solid rgba(57, 255, 20, 0.65) !important;
+  }
+
+  /* 7. Fix simmetria e allineamento Form Sopralluogo */
+  .contact-container {
+    padding: 2.5rem 1.5rem !important; /* Centra perfettamente il box esterno */
+    box-sizing: border-box !important;
+    overflow: hidden !important; /* Impedisce agli elementi di sbordare */
+  }
+
+  .contact-form,
+  .form-row-shared {
+    padding-left: 0 !important; /* Rimuove i padding nascosti che spingevano a destra */
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .form-dropdown {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important; /* Ferma l'espansione dei campi oltre i bordi */
+  }
+
+  /* =========================================================
+     FIX ESTETICO E STRUTTURALE: TESTI CONTATTI E CAMPI AFFIANCATI
+     ========================================================= */
+
+  /* 1. Email e indirizzo su una riga singola (niente parole tagliate) */
+  .info-link p {
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: nowrap !important;
+    font-size: 0.85rem !important; /* Rimpicciolisce per far stare tutto nello schermo */
+  }
+
+  /* Bilancia la dimensione dell'icona verde con il nuovo font più piccolo */
+  .info-link span.material-icons-outlined {
+    font-size: 1.15rem !important;
+  }
+
+  /* 2. Disinnesca l'espansione forzata della griglia (evita l'effetto scentrato) */
+  .contact-info,
+  .contact-form {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 3. Assicura che i campi generali non escano mai dal form */
+  .contact-form input,
+  .contact-form textarea,
+  .form-dropdown {
+    max-width: 100% !important;
+  }
+
+  /* 4. Affianca Comune (più largo, 2/3) e Provincia (più stretto, 1/3) su una sola riga */
+  .contact-form .form-row-shared {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    gap: 1.2rem !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  .contact-form .form-row-shared input {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* =========================================================
+     FASE 4: FIX CAROSELLI (RECENSIONI E GALLERIA) SU MOBILE
+     ========================================================= */
+
+  /* 1. Riduciamo lo spazio morto tra le card e il margine finale */
+  .carousel-track {
+    gap: 1.2rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .gallery-track {
+    gap: 1.2rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  /* 2. Rimpiccioliamo le recensioni per far intravedere la card successiva (UX Scroll) */
+  .carousel-track .review-box {
+    width: 270px !important;
+    padding: 1.8rem !important; /* Riduciamo anche il padding interno per bilanciare */
+  }
+
+  /* 3. Adattiamo le immagini della galleria alle proporzioni del telefono */
+  .gallery-item {
+    width: 250px !important;
+    height: 190px !important;
+  }
+
+  /* 4. Fix bilanciamento caroselli mobile */
+  .reviews-carousel-container,
+  .gallery-carousel-container {
+    padding-left: 1.5rem !important; /* Sposta l'inizio dello scroll leggermente a destra */
+    padding-right: 1.5rem !important; /* Crea il respiro mancante a destra */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Assicura che il track sia ben allineato */
+  .carousel-track,
+  .gallery-track {
+    padding-right: 1.5rem !important;
+  }
+  /*----------------------------------------------------------------------
+  ------------------------------------------------------------------------*/
 
 
 
