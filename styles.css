@@ -1267,6 +1267,32 @@ footer ul a:hover {
               16. RESPONSIVE DISPLAYS & HAMBURGER SYSTEM
               ========================================================================== */
 @media screen and (max-width: 900px) {
+/* =========================================================
+     FASE 1: REGOLA SCHIACCIASASSI PER LE GRIGLIE MOBILE
+     ========================================================= */
+  .bio-grid,
+  .bento-grid,
+  .network-grid,
+  .work-with-me-container,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important; 
+  }
+
+  /* Riduciamo i padding interni per non soffocare lo schermo */
+  .bento-box {
+    padding: 2.5rem 1.5rem !important;
+  }
+  
+  .footer-grid {
+    gap: 2.5rem !important;
+  }
+
+
+
+
+
+
   .menu-toggle-btn {
     display: flex;
     flex-direction: column;
