@@ -1288,7 +1288,39 @@ footer ul a:hover {
     gap: 2.5rem !important;
   }
 
+/* =========================================================
+     FASE 2: RESET LAYOUT SERVIZI (02, 04, 06) SU MOBILE
+     ========================================================= */
+  
+  /* 1. Forza la singola colonna e riduce i margini enormi del desktop */
+  .service-row {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+    padding: 2.5rem 1.5rem !important;
+  }
 
+  /* 2. Spegne la scacchiera per i servizi pari */
+  .service-row:nth-child(even) {
+    grid-template-areas: none !important;
+  }
+
+  /* 3. RESET VITALE: sgancia testo e immagine dalle vecchie regole desktop */
+  .service-row:nth-child(even) .service-text,
+  .service-row:nth-child(even) .service-img {
+    grid-area: auto !important; 
+  }
+
+  /* 4. Forza l'ordine naturale: Testo sopra, Immagine sotto */
+  .service-text {
+    order: 1 !important;
+  }
+  
+  .service-img {
+    order: 2 !important;
+    width: 100% !important;
+    height: 260px !important; /* Altezza sicura per non schiacciare le foto */
+    min-height: 260px !important;
+  }
 
 
 
