@@ -382,7 +382,8 @@ header {
 
 .bio-placeholder-img {
   width: 100%;
-  height: 420px;
+  height: 420px; /* Altezza di default per desktop */
+  min-height: 320px; /* Altezza minima di sicurezza per smartphone */
   background-color: #f8f9fa;
   border: 2px solid var(--text-neon-dark);
   border-radius: 20px;
@@ -390,6 +391,13 @@ header {
     url("./img/massimiliano-marchetto.svg");
   background-size: cover;
   background-position: center;
+}
+
+/* Regolazione specifica per schermi piccoli (smartphone) */
+@media (max-width: 768px) {
+  .bio-placeholder-img {
+    height: 350px; /* Riduciamo leggermente l'altezza per adattarla ai display mobile */
+  }
 }
 
 .bio-badges {
@@ -686,10 +694,10 @@ header {
   background-image: url("./img/fresatura-ceppaie-venezia.svg");
 }
 .img-pulizia {
-  background-image: url("./img/pacciamatura-aiuole-manutenzione-verde-condominiale-mestre.jpg");
+  background-image: url("./img/pulizia-giardino-pacciamatura-mestre.svg");
 }
 .img-grid-rigenerazione {
-  background-image: url("./img/risemina-prato-manutenzione-condominiale-mestre.jpg");
+  background-image: url("./img/risemina-rigenerazione-prato-marcon.svg");
 }
 
 /* ==========================================================================
@@ -910,20 +918,26 @@ header {
 }
 
 /* ==========================================================================
-             12. CONTATTI (Sopralluogo)
-             ========================================================================== */
+            12. CONTATTI (Sopralluogo)
+   ========================================================================== */
 .contact-intro-text {
   text-align: center;
   max-width: 700px;
   margin: -2rem auto 3rem auto;
-  color: var(--text-dark-sub);
+  color: #121212; /* Testo esterno scuro per leggibilità sullo sfondo chiaro della sezione */
   font-size: 1.05rem;
+  font-weight: 500;
 }
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 5rem;
-  background-color: rgba(10, 10, 10, 0.95);
+  background-color: rgba(
+    10,
+    10,
+    10,
+    0.95
+  ); /* Sfondo del box tornato scuro come prima */
   border: 1px solid rgba(57, 255, 20, 0.15);
   border-radius: 24px;
   padding: 4rem;
@@ -944,14 +958,16 @@ header {
 .contact-info h3 {
   font-size: 1.8rem;
   text-transform: uppercase;
+  color: var(--neon-green); /* Rende il nome in verde fluo */
 }
 .contact-sub {
-  color: var(--neon-green);
+  color: #ffffff; /* Porta la scritta di manutenzione in bianco */
   font-size: 0.9rem;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 2.5rem;
 }
+
 .info-link {
   display: flex;
   align-items: center;
@@ -971,7 +987,7 @@ header {
 .contact-form input,
 .contact-form textarea,
 .form-dropdown {
-  background-color: var(--bg-dark-body);
+  background-color: var(--bg-dark-body); /* Campi scuri originali */
   border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 1.1rem;
@@ -994,7 +1010,6 @@ header {
 .contact-form button {
   cursor: pointer;
 }
-
 /* ==========================================================================
              13. SEZIONE FAQ
              ========================================================================== */
@@ -1267,8 +1282,7 @@ footer ul a:hover {
               16. RESPONSIVE DISPLAYS & HAMBURGER SYSTEM
               ========================================================================== */
 @media screen and (max-width: 900px) {
-
- /* =========================================================
+  /* =========================================================
      FASE 1: REGOLA SCHIACCIASASSI PER LE GRIGLIE MOBILE
      ========================================================= */
   .bio-grid,
@@ -1492,8 +1506,6 @@ footer ul a:hover {
   }
   /*----------------------------------------------------------------------
   ------------------------------------------------------------------------*/
-
-
 
   .menu-toggle-btn {
     display: flex;
